@@ -315,7 +315,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>/Users/dmitryanoshin/Documents/Data Integration/5040OS_Code/5040OS_03_Code/pdi_labs/staging orders.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/staging orders.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -354,7 +354,7 @@
       <attributes/>
       <specification_method>filename</specification_method>
       <trans_object_id/>
-      <filename>/Users/dmitryanoshin/Documents/Data Integration/5040OS_Code/5040OS_03_Code/pdi_labs/dim_tables.ktr</filename>
+      <filename>${Internal.Entry.Current.Directory}/dim_tables.ktr</filename>
       <transname/>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
@@ -404,7 +404,7 @@
       <type>WRITE_TO_LOG</type>
       <attributes/>
       <logmessage/>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <logsubject/>
       <parallel>N</parallel>
       <draw>Y</draw>
@@ -419,7 +419,7 @@
       <type>WRITE_TO_LOG</type>
       <attributes/>
       <logmessage/>
-      <loglevel/>
+      <loglevel>Basic</loglevel>
       <logsubject/>
       <parallel>N</parallel>
       <draw>Y</draw>

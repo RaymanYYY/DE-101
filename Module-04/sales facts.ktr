@@ -443,7 +443,7 @@
     <database>postgres</database>
     <port>5432</port>
     <username>postgres</username>
-    <password>Encrypted 2be98afc86aa7f2e4bb18bd63c99dbdde</password>
+    <password>Encrypted 2be98afc86aa7f2e4cb01ba2987caff8a</password>
     <servername/>
     <data_tablespace/>
     <index_tablespace/>
@@ -589,7 +589,248 @@
     </hop>
   </order>
   <step>
-    <name>geo sort</name>
+    <name>Add sales_id</name>
+    <type>Sequence</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <valuename>sales_id</valuename>
+    <use_database>N</use_database>
+    <connection>postgres</connection>
+    <schema/>
+    <seqname>SEQ_</seqname>
+    <use_counter>Y</use_counter>
+    <counter_name/>
+    <start_at>101</start_at>
+    <increment_by>1</increment_by>
+    <max_value>999999999</max_value>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>640</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Select values</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <fields>
+      <field>
+        <name>ship_mode</name>
+      </field>
+      <field>
+        <name>ship_id</name>
+      </field>
+      <field>
+        <name>row_id</name>
+      </field>
+      <field>
+        <name>order_id</name>
+      </field>
+      <field>
+        <name>order_date</name>
+      </field>
+      <field>
+        <name>ship_date</name>
+      </field>
+      <field>
+        <name>ship_mode_1</name>
+      </field>
+      <field>
+        <name>customer_id</name>
+      </field>
+      <field>
+        <name>customer_name</name>
+      </field>
+      <field>
+        <name>segment</name>
+      </field>
+      <field>
+        <name>country</name>
+      </field>
+      <field>
+        <name>city</name>
+      </field>
+      <field>
+        <name>state</name>
+      </field>
+      <field>
+        <name>region</name>
+      </field>
+      <field>
+        <name>product_id</name>
+      </field>
+      <field>
+        <name>category</name>
+      </field>
+      <field>
+        <name>subcategory</name>
+      </field>
+      <field>
+        <name>product_name</name>
+      </field>
+      <field>
+        <name>sales</name>
+      </field>
+      <field>
+        <name>quantity</name>
+      </field>
+      <field>
+        <name>discount</name>
+      </field>
+      <field>
+        <name>profit</name>
+      </field>
+      <field>
+        <name>postal_code</name>
+      </field>
+      <field>
+        <name>country_1</name>
+      </field>
+      <field>
+        <name>city_1</name>
+      </field>
+      <field>
+        <name>state_1</name>
+      </field>
+      <field>
+        <name>geo_id</name>
+      </field>
+      <field>
+        <name>postal_code_1</name>
+      </field>
+      <field>
+        <name>customer_id_1</name>
+      </field>
+      <field>
+        <name>customer_name_1</name>
+      </field>
+      <field>
+        <name>cust_id</name>
+      </field>
+      <field>
+        <name>product_id_1</name>
+      </field>
+      <field>
+        <name>product_name_1</name>
+      </field>
+      <field>
+        <name>category_1</name>
+      </field>
+      <field>
+        <name>segment_1</name>
+      </field>
+      <field>
+        <name>prod_id</name>
+      </field>
+      <field>
+        <name>sub_category</name>
+      </field>
+      <select_unspecified>N</select_unspecified>
+      <remove>
+        <name>country_1</name>
+      </remove>
+      <remove>
+        <name>city_1</name>
+      </remove>
+      <remove>
+        <name>state_1</name>
+      </remove>
+      <remove>
+        <name>postal_code_1</name>
+      </remove>
+      <remove>
+        <name>ship_mode_1</name>
+      </remove>
+      <remove>
+        <name>customer_id_1</name>
+      </remove>
+      <remove>
+        <name>customer_name_1</name>
+      </remove>
+      <remove>
+        <name>product_id_1</name>
+      </remove>
+      <remove>
+        <name>product_name_1</name>
+      </remove>
+      <remove>
+        <name>category_1</name>
+      </remove>
+      <remove>
+        <name>segment_1</name>
+      </remove>
+      <meta>
+        <name>order_date</name>
+        <rename>order_date</rename>
+        <type>String</type>
+        <length>8</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+      <meta>
+        <name>ship_date</name>
+        <rename>ship_date</rename>
+        <type>String</type>
+        <length>8</length>
+        <precision>-2</precision>
+        <conversion_mask>yyyyMMdd</conversion_mask>
+        <date_format_lenient>false</date_format_lenient>
+        <date_format_locale/>
+        <date_format_timezone/>
+        <lenient_string_to_number>false</lenient_string_to_number>
+        <encoding/>
+        <decimal_symbol/>
+        <grouping_symbol/>
+        <currency_symbol/>
+        <storage_type/>
+      </meta>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>624</xloc>
+      <yloc>560</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 2</name>
     <type>SortRows</type>
     <description/>
     <distribute>Y</distribute>
@@ -608,7 +849,7 @@
     <unique_rows>N</unique_rows>
     <fields>
       <field>
-        <name>postal_code</name>
+        <name>product_id</name>
         <ascending>Y</ascending>
         <case_sensitive>N</case_sensitive>
         <collator_enabled>N</collator_enabled>
@@ -626,7 +867,49 @@
     </remotesteps>
     <GUI>
       <xloc>176</xloc>
-      <yloc>240</yloc>
+      <yloc>480</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>Sort rows 3</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>dateid</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -719,132 +1002,6 @@
     <GUI>
       <xloc>176</xloc>
       <yloc>400</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 2</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>product_id</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>480</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Sort rows 3</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>N</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>dateid</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>176</xloc>
-      <yloc>560</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>orders sort</name>
-    <type>SortRows</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <directory>%%java.io.tmpdir%%</directory>
-    <prefix>out</prefix>
-    <sort_size>1000000</sort_size>
-    <free_memory/>
-    <compress>N</compress>
-    <compress_variable/>
-    <unique_rows>N</unique_rows>
-    <fields>
-      <field>
-        <name>postal_code</name>
-        <ascending>Y</ascending>
-        <case_sensitive>N</case_sensitive>
-        <collator_enabled>N</collator_enabled>
-        <collator_strength>0</collator_strength>
-        <presorted>N</presorted>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>336</xloc>
-      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1312,7 +1469,7 @@ FROM dw.customer_dim
         <name>customer_id</name>
         <length>2147483647</length>
         <precision>-1</precision>
-        <origin>dw.costumer_dim</origin>
+        <origin>dw.customer_dim</origin>
         <comments>customer_id</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -1335,7 +1492,7 @@ FROM dw.customer_dim
         <name>customer_name</name>
         <length>2147483647</length>
         <precision>-1</precision>
-        <origin>dw.costumer_dim</origin>
+        <origin>dw.customer_dim</origin>
         <comments>customer_name</comments>
         <conversion_Mask/>
         <decimal_symbol>.</decimal_symbol>
@@ -1358,7 +1515,7 @@ FROM dw.customer_dim
         <name>cust_id</name>
         <length>-1</length>
         <precision>-1</precision>
-        <origin>dw.costumer_dim</origin>
+        <origin>dw.customer_dim</origin>
         <comments>cust_id</comments>
         <conversion_Mask>####0.0#########;-####0.0#########</conversion_Mask>
         <decimal_symbol>.</decimal_symbol>
@@ -1815,8 +1972,8 @@ FROM dw.product_dim
       </output>
     </remotesteps>
     <GUI>
-      <xloc>784</xloc>
-      <yloc>656</yloc>
+      <xloc>704</xloc>
+      <yloc>640</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -1936,6 +2093,90 @@ FROM dw.shipping_dim
     <GUI>
       <xloc>336</xloc>
       <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>geo sort</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>postal_code</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>176</xloc>
+      <yloc>240</yloc>
+      <draw>Y</draw>
+    </GUI>
+  </step>
+  <step>
+    <name>orders sort</name>
+    <type>SortRows</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+    <partitioning>
+      <method>none</method>
+      <schema_name/>
+    </partitioning>
+    <directory>%%java.io.tmpdir%%</directory>
+    <prefix>out</prefix>
+    <sort_size>1000000</sort_size>
+    <free_memory/>
+    <compress>N</compress>
+    <compress_variable/>
+    <unique_rows>N</unique_rows>
+    <fields>
+      <field>
+        <name>postal_code</name>
+        <ascending>Y</ascending>
+        <case_sensitive>N</case_sensitive>
+        <collator_enabled>N</collator_enabled>
+        <collator_strength>0</collator_strength>
+        <presorted>N</presorted>
+      </field>
+    </fields>
+    <attributes/>
+    <cluster_schema/>
+    <remotesteps>
+      <input>
+      </input>
+      <output>
+      </output>
+    </remotesteps>
+    <GUI>
+      <xloc>336</xloc>
+      <yloc>176</yloc>
       <draw>Y</draw>
     </GUI>
   </step>
@@ -2511,284 +2752,6 @@ FROM stg.orders
     <GUI>
       <xloc>336</xloc>
       <yloc>80</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Add sales_id</name>
-    <type>Sequence</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <valuename>sales_id</valuename>
-    <use_database>N</use_database>
-    <connection>postgres</connection>
-    <schema/>
-    <seqname>SEQ_</seqname>
-    <use_counter>Y</use_counter>
-    <counter_name/>
-    <start_at>101</start_at>
-    <increment_by>1</increment_by>
-    <max_value>999999999</max_value>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>720</xloc>
-      <yloc>656</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>Select values</name>
-    <type>SelectValues</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <fields>
-      <field>
-        <name>ship_mode</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ship_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>row_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>order_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>order_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ship_date</name>
-        <rename/>
-      </field>
-      <field>
-        <name>ship_mode_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>customer_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>customer_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>segment</name>
-        <rename/>
-      </field>
-      <field>
-        <name>country</name>
-        <rename/>
-      </field>
-      <field>
-        <name>city</name>
-        <rename/>
-      </field>
-      <field>
-        <name>state</name>
-        <rename/>
-      </field>
-      <field>
-        <name>region</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>category</name>
-        <rename/>
-      </field>
-      <field>
-        <name>subcategory</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product_name</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sales</name>
-        <rename/>
-      </field>
-      <field>
-        <name>quantity</name>
-        <rename/>
-      </field>
-      <field>
-        <name>discount</name>
-        <rename/>
-      </field>
-      <field>
-        <name>profit</name>
-        <rename/>
-      </field>
-      <field>
-        <name>postal_code</name>
-        <rename/>
-      </field>
-      <field>
-        <name>country_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>city_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>state_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>geo_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>postal_code_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>customer_id_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>customer_name_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>cust_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product_id_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>product_name_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>category_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>segment_1</name>
-        <rename/>
-      </field>
-      <field>
-        <name>prod_id</name>
-        <rename/>
-      </field>
-      <field>
-        <name>sub_category</name>
-        <rename/>
-      </field>
-      <select_unspecified>N</select_unspecified>
-      <remove>
-        <name>country_1</name>
-      </remove>
-      <remove>
-        <name>city_1</name>
-      </remove>
-      <remove>
-        <name>state_1</name>
-      </remove>
-      <remove>
-        <name>postal_code_1</name>
-      </remove>
-      <remove>
-        <name>ship_mode_1</name>
-      </remove>
-      <remove>
-        <name>customer_id_1</name>
-      </remove>
-      <remove>
-        <name>customer_name_1</name>
-      </remove>
-      <remove>
-        <name>product_id_1</name>
-      </remove>
-      <remove>
-        <name>product_name_1</name>
-      </remove>
-      <remove>
-        <name>category_1</name>
-      </remove>
-      <remove>
-        <name>segment_1</name>
-      </remove>
-      <meta>
-        <name>order_date</name>
-        <rename>order_date</rename>
-        <type>String</type>
-        <length>8</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyyMMdd</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-      <meta>
-        <name>ship_date</name>
-        <rename>ship_date</rename>
-        <type>String</type>
-        <length>8</length>
-        <precision>-2</precision>
-        <conversion_mask>yyyyMMdd</conversion_mask>
-        <date_format_lenient>false</date_format_lenient>
-        <date_format_locale/>
-        <date_format_timezone/>
-        <lenient_string_to_number>false</lenient_string_to_number>
-        <encoding/>
-        <decimal_symbol/>
-        <grouping_symbol/>
-        <currency_symbol/>
-        <storage_type/>
-      </meta>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>624</xloc>
-      <yloc>560</yloc>
       <draw>Y</draw>
     </GUI>
   </step>

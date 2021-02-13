@@ -1,19 +1,14 @@
--- create schema
--- create dim tables (shipping, customer, product, geo)
--- fix data quality problem
--- create sales_fact table
--- match number of rows between staging and dw (business layer)
+-- 1. create schema
+-- 2. create dim tables (shipping, customer, product, geo)
+-- 3. fix data quality problem (postal codes)
+-- 4. create sales_fact table
+-- 5. match number of rows between staging and dw (business layer)
 
-
-
-
-
-
+drop schema if exists dw;
 create schema dw;
 
 
-
---SHIPPING
+--1. SHIPPING DIMENSION
 
 --creating a table
 drop table if exists dw.shipping_dim ;
@@ -36,7 +31,7 @@ select * from dw.shipping_dim sd;
 
 
 
---CUSTOMER
+--2. CUSTOMER DIMENSION
 
 drop table if exists dw.customer_dim ;
 CREATE TABLE dw.customer_dim
@@ -57,8 +52,7 @@ select * from dw.customer_dim cd;
 
 
 
-
---GEOGRAPHY
+--3. GEO DIMENSION
 
 drop table if exists dw.geo_dim ;
 CREATE TABLE dw.geo_dim
@@ -97,7 +91,7 @@ where city = 'Burlington';
 
 
 
---PRODUCT
+--4. PRODUCT DIMENSION
 
 --creating a table
 drop table if exists dw.product_dim ;
@@ -122,9 +116,8 @@ select * from dw.product_dim cd;
 
 
 
---CALENDAR use function instead 
--- examplehttps://tapoueh.org/blog/2017/06/postgresql-and-the-calendar/
-
+--5. CALENDAR DIMENSION 
+--uses function https://tapoueh.org/blog/2017/06/postgresql-and-the-calendar/
 --creating a table
 drop table if exists dw.calendar_dim ;
 CREATE TABLE dw.calendar_dim
@@ -142,7 +135,7 @@ CONSTRAINT PK_calendar_dim PRIMARY KEY ( dateid )
 
 --deleting rows
 truncate table dw.calendar_dim;
---
+
 insert into dw.calendar_dim 
 select 
 to_char(date,'yyyymmdd')::int as date_id,  
@@ -167,7 +160,7 @@ select * from dw.calendar_dim;
 
 
 
---METRICS
+--7. SALES FACT TALBE
 
 --creating a table
 drop table if exists dw.sales_fact ;
@@ -187,7 +180,7 @@ CREATE TABLE dw.sales_fact
  discount    numeric(4,2) NOT NULL,
  CONSTRAINT PK_sales_fact PRIMARY KEY ( sales_id ));
 
-
+--INSERTING DATA FROM STAGING
 insert into dw.sales_fact 
 select
 	 100+row_number() over() as sales_id
@@ -204,25 +197,14 @@ select
 	 ,discount
 from stg.orders o 
 inner join dw.shipping_dim s on o.ship_mode = s.shipping_mode
-inner join dw.geo_dim g on o.postal_code = g.postal_code and g.country=o.country and g.city = o.city and o.state = g.state --City Burlington doesn't have postal code
+inner join dw.geo_dim g on o.postal_code = g.postal_code and g.country=o.country and g.city = o.city and o.state = g.state
 inner join dw.product_dim p on o.product_name = p.product_name and o.segment=p.segment and o.subcategory=p.sub_category and o.category=p.category and o.product_id=p.product_id 
 inner join dw.customer_dim cd on cd.customer_id=o.customer_id and cd.customer_name=o.customer_name; 
 
 
---do you get 9994rows?
+--checking - result must be 9994 rows!
 select count(*) from dw.sales_fact sf
 inner join dw.shipping_dim s on sf.ship_id=s.ship_id
 inner join dw.geo_dim g on sf.geo_id=g.geo_id
 inner join dw.product_dim p on sf.prod_id=p.prod_id
 inner join dw.customer_dim cd on sf.cust_id=cd.cust_id;
-
-
-
-
-
-
-
-
-
-
-

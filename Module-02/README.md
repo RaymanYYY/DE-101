@@ -8,7 +8,7 @@ Star schema:
 ![img](https://github.com/RaymanYYY/DE-101/blob/master/Module-02/jpg/star_schema.jpg)
 
 
-SQL queries are located in *SQL Queries* folder.
+SQL queries are located in [SQL Queries](https://github.com/RaymanYYY/DE-101/tree/master/Module-02/SQL%20Queries) folder.
 
 Quick overview of key metrics:
 

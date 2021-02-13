@@ -52,7 +52,7 @@ group by to_char(order_date, 'YYYY-MM'),2
 order by 1
 ```
 
-## Data Studio connecting to DB
+## Google Data Studio
 
 Google Data Studio connection query:
 
@@ -69,6 +69,6 @@ Resulted fields:
 
 ![img](https://github.com/RaymanYYY/DE-101/blob/master/Module-02/jpg/GDS_fields.jpg)
 
-Google DataStudio Dashboard link: https://datastudio.google.com/reporting/1d9bf4c5-ca86-41c7-a7a3-f07c3b198b2c
+[Google DataStudio Dashboard link](https://datastudio.google.com/reporting/1d9bf4c5-ca86-41c7-a7a3-f07c3b198b2c)
 
-Offline PDF version: https://github.com/RaymanYYY/DE-101/blob/master/Module-02/GoogelDataStudio.pdf
+![img](https://github.com/RaymanYYY/DE-101/blob/master/Module-02/jpg/GDS_dashboard.jpg)
